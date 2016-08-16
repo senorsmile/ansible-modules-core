@@ -1279,8 +1279,8 @@ class DockerManager(object):
 
             # NETWORK MODE
 
-            expected_netmode = self.module.params.get('net') or 'bridge'
-            actual_netmode = container['HostConfig']['NetworkMode'] or 'bridge'
+            expected_netmode = self.module.params.get('net') or 'default'
+            actual_netmode = container['HostConfig']['NetworkMode'] or 'default'
             if actual_netmode != expected_netmode:
                 self.reload_reasons.append('net ({0} => {1})'.format(actual_netmode, expected_netmode))
                 differing.append(container)
